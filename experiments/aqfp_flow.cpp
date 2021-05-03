@@ -81,14 +81,21 @@ using namespace mockturtle;
 
 using cost_fn_t = fanout_cost_depth_local<mig_network>;
 using limit_view_t = fanout_limit_view<mig_network>;
-using aqfp_view_t = aqfp_view<limit_view_t, true>;
+using aqfp_view_t = aqfp_view<limit_view_t>;
 using depth_view_t = depth_view<limit_view_t>;
 using jj_depth_view_t = depth_view<limit_view_t, cost_fn_t>;
 
 void get_statistics( mig_network const& mig, uint32_t& size, uint32_t& depth, uint32_t& jj_count, uint32_t& jj_depth )
 {
+  aqfp_view_params aqfp_ps;
+  aqfp_ps.branch_pis = false;
+  aqfp_ps.balance_pis = false;
+  aqfp_ps.balance_pos = true;
+  aqfp_ps.splitter_capacity = 4u;
+  aqfp_ps.max_splitter_levels = 2u;
+
   limit_view_t mig_limited = cleanup_dangling<mig_network, limit_view_t>( mig );
-  aqfp_view_t mig_aqfp( mig_limited );
+  aqfp_view_t mig_aqfp( mig_limited, aqfp_ps );
   depth_view_t mig_depth( mig_limited );
   jj_depth_view_t mig_jj_depth( mig_limited, cost_fn_t() );
 
