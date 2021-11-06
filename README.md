@@ -10,7 +10,7 @@ The verilog files in `experiments/benchmarks_aqfp/` contain the starting point M
 ```
 
 ## Experiments
-The file `experiments/aqfp_flow.cpp` contains the code to run the full optimization flow presented in the above paper with the logic synthesis library [mockturtle](https://github.com/lsils/mockturtle). Please refer to its [documentation](https://mockturtle.readthedocs.io/en/latest/installation.html) for instructions on the installation of the library. Note that many changes have been made in `mockturtle` since the implementation of this work, thus different results may be achieved. In order to obtain similar results, please clone from pull request [#426](https://github.com/lsils/mockturtle/pull/426).
+The file `experiments/aqfp_flow.cpp` contains the code to run the full optimization flow presented in the above paper with the logic synthesis library [mockturtle](https://github.com/lsils/mockturtle). Please refer to its [documentation](https://mockturtle.readthedocs.io/en/latest/installation.html) for instructions on the installation of the library. Note that many changes have been made in `mockturtle` since the implementation of this work, thus different results may be achieved. In order to obtain similar results, please clone from pull request [#456](https://github.com/lsils/mockturtle/pull/456).
 
 To reproduce Tables 1 and 3 in the paper, please copy the entire `experiments` folder from this repository and paste it into the cloned `mockturtle` repository (replacing the original one). Then, configure, compile and run with the following commands:
 
